@@ -146,7 +146,7 @@
 					</div>
 				</div>
 			</a>
-			<a href="https://aquacode.xyz" target="_blank">
+			<a href="https://bytecodey.xyz" target="_blank">
 				<div class="flex flex-row hover:bg-slate-800/50 w-max rounded-md p-4">
 					<img
 						src="/bytecodey.png"
