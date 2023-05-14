@@ -249,7 +249,7 @@
 				</div>
 			</div>
 			</a>
-			<a href="https://aquacode.xyz" target="_blank">
+			<a href="https://youtubeclone.harshagrawal.xyz" target="_blank">
 				<div class="flex flex-row hover:bg-slate-800/50 w-max rounded-md p-4">
 					<img
 						src="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png"
@@ -261,7 +261,7 @@
 							class="flex flex-row items-center text-white hover:text-teal-300 hover:fill-teal-300"
 						>
 							<a
-								href="https://aquacode.xyz"
+								href="https://youtubeclone.harshagrawal.xyz"
 								class="font-semibold text-xl flex flex-row items-center"
 								>Youtube Clone <svg
 									xmlns="http://www.w3.org/2000/svg"
