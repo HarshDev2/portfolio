@@ -105,7 +105,7 @@
 				<div class="flex flex-row hover:bg-slate-800/50 w-max rounded-md p-6">
 					<img
 						src="/favicon.png"
-						alt="aquacode"
+						alt="portfolio"
 						class="w-16 h-16"
 					/>
 					<div class="flex flex-col ml-4">
@@ -159,6 +159,7 @@
 						>
 							<a
 								href="https://bytecodey.xyz"
+								target="_blank"
 								class="font-semibold text-xl flex flex-row items-center"
 								>Byte Codey Blog<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -204,6 +205,7 @@
 					<div class="flex flex-row items-center text-white">
 						<a
 							href="https://aquacode.xyz"
+							target="_blank"
 							class="font-semibold text-xl flex flex-row items-center hover:text-teal-300"
 							>Aquacode <svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -262,6 +264,7 @@
 						>
 							<a
 								href="https://youtubeclone.harshagrawal.xyz"
+								target="_blank"
 								class="font-semibold text-xl flex flex-row items-center"
 								>Youtube Clone <svg
 									xmlns="http://www.w3.org/2000/svg"
