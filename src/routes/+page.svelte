@@ -147,6 +147,57 @@
 				</div>
 			</a>
 			<a href="https://aquacode.xyz" target="_blank">
+				<div class="flex flex-row hover:bg-slate-800/50 w-max rounded-md p-4">
+					<img
+						src="/bytecodey.png"
+						alt="bytecodey"
+						class="w-18 h-18"
+					/>
+					<div class="flex flex-col mt-2 ml-4">
+						<div
+							class="flex flex-row items-center text-white hover:text-teal-300 hover:fill-teal-300"
+						>
+							<a
+								href="https://bytecodey.xyz"
+								class="font-semibold text-xl flex flex-row items-center"
+								>Byte Codey Blog<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									class="w-4 h-4 fill-white ml-1"
+									aria-hidden="true"
+									><path
+										fill-rule="evenodd"
+										d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+										clip-rule="evenodd"
+									/></svg
+								></a
+							>
+						</div>
+						<p class="text-slate-400 mt-2 text-base">
+							This is my blog site that provides tips and guidance on Node.js, SvelteKit, <br> and React to help anyone become a successful full stack developer. <br> Stay up-to-date on the latest trends and best practices in<br> these technologies through my engaging and informative content.
+						</p>
+						<div class="flex flex-row w-4/5 flex-wrap mt-2">
+							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
+								<span class="text-teal-300 font-semibold text-sm">Svelte</span>
+							</div>
+							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
+								<span class="text-teal-300 font-semibold text-sm">SvelteKit</span>
+							</div>
+							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
+								<span class="text-teal-300 font-semibold text-sm">Markdown</span>
+							</div>
+							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
+								<span class="text-teal-300 font-semibold text-sm">Tailwind</span>
+							</div>
+							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
+								<span class="text-teal-300 font-semibold text-sm">Vercel</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="https://aquacode.xyz" target="_blank">
 			<div class="flex flex-row hover:bg-slate-800/50 w-max rounded-md p-2">
 				<img src="/aquacode.png" alt="aquacode" class="w-24 h-24 ml-24 2xl:ml-0" />
 				<div class="flex flex-col mt-2 mr-4">
