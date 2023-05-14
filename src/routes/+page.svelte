@@ -12,6 +12,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Harsh Agrawal</title>
+</svelte:head>
+
 <div class="flex flex-col 2xl:flex-row 2xl:ml-48 2xl:mt-28">
 	<div class="2xl:fixed flex flex-col items-center 2xl:items-start">
 		<h1 class="text-6xl font-bold">Harsh Agrawal</h1>
