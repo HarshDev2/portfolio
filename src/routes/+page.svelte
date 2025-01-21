@@ -4,46 +4,34 @@
 	let mouseX = 100;
 	let mouseY = 100;
 
-	onMount(() => {
-		window.addEventListener('mousemove', (event) => {
-			mouseX = event.clientX;
-			mouseY = event.clientY;
-		});
-	});
+	let skillSets = ['Javascript', 'TypeScript', 'Go', 'MongoDB', 'PostgresSQL', 'React', 'NextJS', 'Svelte', 'SvelteKit', 'React Native', 'Expo'];
 </script>
 
 <svelte:head>
 	<title>Harsh Agrawal</title>
 </svelte:head>
 
-<div class="flex flex-col w-full xl:flex-row">
-	<div class="flex flex-col items-center mt-24 xl:ml-[20%] xl:sticky xl:top-24 xl:h-full">
-		<div class="flex flex-col">
+<div class="flex flex-col items-center w-full">
+	<div class="flex flex-col items-center mt-24">
+		<div class="flex flex-col px-4">
 			<h1 class="text-6xl font-bold text-center">Harsh Agrawal</h1>
 			<h2 class="mt-4 text-3xl font-semibold text-center">Full Stack Developer</h2>
-			<h3 class="mt-2 text-slate-300 text-center text-[14px]">
-				From code to launch, <br class="hidden xl:flex"/> I make sure your digital product is accessible and inclusive for all.
+
+			<h3 class="text-slate-300 text-center text-[14px] mt-4">
+				From code to launch, <br class="hidden xl:flex" /> I make sure your digital product is accessible
+				and inclusive for all.
 			</h3>
+
+			<div class="flex flex-row mt-2 flex-wrap w-[620px] gap-2 justify-center">
+				{#each skillSets as skill}
+					<div class="rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max">
+						<span class="text-teal-300 font-semibold text-sm">{skill}</span>
+					</div>
+				{/each}
+			</div>
 		</div>
 
 		<div class="flex flex-col w-full">
-			<nav class="hidden xl:flex xl:flex-col xl:mt-[10%]">
-				<a
-					href="#about"
-					class="text-slate-400 text-base font-bold hover:text-white flex flex-row items-center"
-					><span class="bg-slate-400 block h-0.5 w-8 mr-2" />About</a
-				>
-				<a
-					href="#projects"
-					class="text-slate-400 text-base font-bold hover:text-white flex flex-row items-center"
-					><span class="bg-slate-400 block h-0.5 w-8 mr-2" />Projects</a
-				>
-				<a
-					href="#contact"
-					class="text-slate-400 text-base font-bold hover:text-white flex flex-row items-center"
-					><span class="bg-slate-400 block h-0.5 w-8 mr-2" />Contact</a
-				>
-			</nav>
 			<div class="flex flex-row mt-6 w-full justify-center">
 				<a href="https://github.com/harshdev2">
 					<svg
@@ -78,23 +66,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="mt-6 xl:mt-24 xl:ml-12 flex flex-col items-center xl:items-start">
+
+	<div class="flex flex-col mt-6">
 		<div class="pl-8" id="about">
 			<p class="">
-				Hey there! I'm a 15-year-old full stack web developer with a <br /> passion for creating
-				beautiful and functional web applications. <br /> I've been self-taught since the age of 12
-				and have gained <br /> valuable experience working with
+				Hey there! I'm a 15-year-old full stack web developer with a passion for creating
+				beautiful<br /> and functional web applications. I've been self-taught since the age of 12
+				and <br /> have gained valuable experience working with
 				<a
 					href="https://kit.svelte.dev"
 					target="_blank"
 					class="text-white font-bold hover:text-teal-300">SvelteKit (Svelte)</a
-				> <br /> and
+				> and
 				<a
 					href="https://nextjs.org"
 					target="_blank"
 					class="text-white font-bold hover:text-teal-300">Next.js (React)</a
-				>
-				as well as backend technologies like <br />
+				><br />
+				as well as backend technologies like
 				<a
 					href="https://mongodb.com"
 					target="_blank"
@@ -109,25 +98,26 @@
 					href="https://www.postgresql.org/"
 					target="_blank"
 					class="text-white font-bold hover:text-teal-300">PostgresSQL</a
-				> and many others.
+				><br /> and many others.
 			</p>
 			<p class="mt-4 mb-4">
-				As an independent developer, I've had the opportunity to <br /> work on a variety of
-				projects, including my own coding <br /> learning application called
+				As an independent developer, I've had the opportunity to work on a variety of
+				projects<br /> including my own coding learning application called
 				<a
 					href="https://aquacode.xyz"
 					target="_blank"
 					class="text-white font-bold hover:text-teal-300">AquaCode</a
-				>. I love building <br /> things from scratch and seeing my ideas come to life <br /> on the
+				>. I love building things<br /> from scratch and seeing my ideas come to life on the
 				web.
 			</p>
 			<p>
-				Despite my young age, I have a deep understanding of modern <br /> web development
-				technologies and methodologies. <br /> I am always eager to learn new things and stay
-				up-to-date <br /> with the latest industry trends.
+				Despite my young age, I have a deep understanding of modern web development<br />
+				technologies and methodologies. I am always eager to learn new things and <br />stay
+				up-to-date with the latest industry trends.
 			</p>
 		</div>
-		<div class="" id="projects">
+
+		<div class="mt-6" id="projects">
 			<a href="/">
 				<div class="flex flex-row hover:bg-slate-800/50 rounded-md p-6">
 					<img src="/favicon.png" alt="portfolio" class="w-16 h-16" />
@@ -162,7 +152,7 @@
 								<span class="text-teal-300 font-semibold text-sm">Tailwind</span>
 							</div>
 							<div class="mt-2 rounded-full bg-teal-400/10 pt-0 pb-1 px-3 py-3 w-max mr-2">
-								<span class="text-teal-300 font-semibold text-sm">Netlify</span>
+								<span class="text-teal-300 font-semibold text-sm">Vercel</span>
 							</div>
 						</div>
 					</div>
@@ -331,7 +321,7 @@
 			</a>
 		</div>
 
-		<div class="mt-16 2xl:pl-6 mb-24" id="contact">
+		<div class="mt-12 2xl:pl-6 mb-24" id="contact">
 			<h4 class="font-semibold text-3xl text-white">Get in touch!</h4>
 			<div class="flex flex-row mt-8 items-center">
 				<svg xmlns="http://www.w3.org/2000/svg" class="fill-white w-6 h-6" viewBox="0 0 448 512"
