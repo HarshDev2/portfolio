@@ -33,7 +33,7 @@
 
 		<div class="flex flex-col w-full">
 			<div class="flex flex-row mt-6 w-full justify-center">
-				<a href="https://github.com/harshdev2">
+				<a href="https://github.com/harshdev2" target="_blank">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-6 w-6 fill-slate-400 hover:fill-white transition duration-300"
@@ -43,7 +43,7 @@
 						/></svg
 					>
 				</a>
-				<a class="mx-8" href="https://www.linkedin.com/in/harsh-agrawal-a06115239/">
+				<a class="mx-8" href="https://www.linkedin.com/in/harsh-agrawal-a06115239/" target="_blank">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="fill-slate-400 w-6 h-6 hover:fill-white transition duration-300"
@@ -53,7 +53,7 @@
 						/></svg
 					></a
 				>
-				<a href="https://discord.com/channels/@me/964427367630123029">
+				<a href="https://discord.gg/kZPYKCsec6" target="_blank">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 640 512"
@@ -331,6 +331,7 @@
 				>
 				<a
 					href="https://www.linkedin.com/in/harsh-agrawal-a06115239/"
+					target="_blank"
 					class="ml-2 flex flex-row text-white items-center justify-center"
 					>Harsh Agrawal <svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -353,9 +354,10 @@
 					/></svg
 				>
 				<a
-					href="https://discord.com/channels/@me/964427367630123029"
+					href="https://discord.gg/kZPYKCsec6"
+					target="_blank"
 					class="ml-2 flex flex-row text-white items-center justify-center"
-					>HarshDev#0011<svg
+					>@harshdev<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
 						fill="currentColor"
