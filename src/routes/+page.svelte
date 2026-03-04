@@ -1,10 +1,81 @@
 <script>
 	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
+	import { fly, fade } from 'svelte/transition';
+	import Carousel from '$lib/components/Carousel.svelte';
 
-	let skillSets = ['JavaScript', 'TypeScript', 'Go', 'React', 'Svelte', 'Node.js'];
+	let skillSets = ['JavaScript', 'TypeScript', 'Go', 'React', 'React Native', 'Svelte', 'Node.js'];
 
 	let currentMode = $derived(mode.current);
+
+	let projects = [
+		{
+			name: 'Verix',
+			description: 'Media company with AI-powered news analysis and civic engagement platform.',
+			fullDescription: 'Media company with AI-powered news analysis and civic engagement platform. More details coming soon.',
+			tech: ['React Native', 'Expo', 'Go', 'TypeScript', 'iOS'],
+			image: 'https://www.verix.one/logo-circular-transparent.png',
+			imageClass: 'bg-white',
+			screenshots: ['/verix/screenshot-1.jpg', '/verix/screenshot-2.jpg', '/verix/screenshot-3.jpg', '/verix/screenshot-4.jpg', '/verix/screenshot-5.jpg'],
+			mobile: true,
+			link: 'https://www.verix.one'
+		},
+		{
+			name: 'Peki SHS School Admissions',
+			description: 'School admission system deployed across multiple schools, serving thousands of students for payments and applications.',
+			fullDescription: 'School admission system deployed across multiple schools, serving thousands of students for payments and applications. More details coming soon.',
+			tech: ['Next.js', 'Firebase', 'Node.js', 'Stripe'],
+			image: null,
+			imageClass: '',
+			screenshots: [],
+			link: null
+		},
+		{
+			name: 'Aquacode',
+			description: 'Interactive coding learning app with an integrated AI assistant and quizzes.',
+			fullDescription: 'Aquacode is a coding learning app designed to make learning programming interactive and engaging. It features AI-powered assistance to guide learners through concepts, quizzes to test their understanding, and a smooth, modern UI built with SvelteKit and Tailwind.',
+			tech: ['Svelte', 'SvelteKit', 'MongoDB', 'Tailwind', 'ChatGPT API', 'Vercel'],
+			image: '/aquacode.png',
+			imageClass: 'bg-white',
+			screenshots: ['/aquacode/screenshot-1.png', '/aquacode/screenshot-2.png', '/aquacode/screenshot-3.png'],
+			link: 'https://aquacode.harshagrawal.dev'
+		},
+		{
+			name: 'Bitt',
+			description: 'Multipurpose Discord bot that reached 30k+ users at its peak.',
+			fullDescription: 'Multipurpose Discord bot for moderation, utilities, and fun activities. Reached 30k+ people at its peak, with thousands of users actively using it for fun activities.',
+			tech: ['JavaScript', 'Discord.js', 'Node.js'],
+			image: 'https://cdn.discordapp.com/avatars/1032836183065116722/b2628cef1a5640df7aac021d7e927b68.png?size=512',
+			imageClass: '',
+			imageStyle: 'background-color: rgb(88, 100, 242);',
+			screenshots: [],
+			link: null
+		}
+	];
+
+	let selectedProject = $state(null);
+
+	function openProject(project) {
+		selectedProject = project;
+	}
+
+	function closeProject() {
+		selectedProject = null;
+	}
+
+	function handleKeydown(e) {
+		if (e.key === 'Escape' && selectedProject) {
+			closeProject();
+		}
+	}
+
+	function handleBackdropClick(e) {
+		if (e.target === e.currentTarget) {
+			closeProject();
+		}
+	}
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <ModeWatcher />
 
@@ -17,7 +88,7 @@
 		<div class="flex justify-between items-start">
 			<div>
 				<h1 class="text-4xl font-bold text-gray-900 dark:text-white">Harsh Agrawal</h1>
-				<p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Software Engineer</p>
+				<p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Full Stack Developer</p>
 			</div>
 			<button onclick={toggleMode} class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
 				{#if currentMode === 'dark'}
@@ -52,8 +123,7 @@
 
 		<div class="mt-8 text-gray-600 dark:text-gray-400 leading-relaxed space-y-4">
 			<p>
-				Hey there! I'm a software engineer with a passion for creating
-				beautiful and functional web applications. I've been coding since 13 and professionally for the last 3 years,
+				Hey there! I'm a full stack developer with a passion for programming. I've been coding since 13 and professionally for the last 3 years,
 				gaining valuable experience working with
 				<a href="https://kit.svelte.dev" target="_blank" class="text-gray-900 dark:text-white font-medium hover:text-gray-600 dark:hover:text-gray-300">SvelteKit</a> and
 				<a href="https://nextjs.org" target="_blank" class="text-gray-900 dark:text-white font-medium hover:text-gray-600 dark:hover:text-gray-300">Next.js</a>
@@ -66,12 +136,14 @@
 			<p>
 				As an independent developer, I've had the opportunity to work on a variety of
 				projects including my own coding learning application called
-				<a href="https://aquacode.xyz" target="_blank" class="text-gray-900 dark:text-white font-medium hover:text-gray-600 dark:hover:text-gray-300">AquaCode</a>. I love building things
+				<a href="https://aquacode.harshagrawal.dev" target="_blank" class="text-gray-900 dark:text-white font-medium hover:text-gray-600 dark:hover:text-gray-300">AquaCode</a>. I love building things
 				from scratch and seeing my ideas come to life on the web.
 			</p>
 			<p>
 				I have a deep understanding of modern web development
-				technologies and methodologies. I am always eager to learn new things and stay
+				technologies and methodologies, and I'm also well-versed in mobile development with
+				<a href="https://reactnative.dev" target="_blank" class="text-gray-900 dark:text-white font-medium hover:text-gray-600 dark:hover:text-gray-300">React Native</a>.
+				I am always eager to learn new things and stay
 				up-to-date with the latest industry trends.
 			</p>
 		</div>
@@ -79,63 +151,26 @@
 		<h2 class="mt-12 text-xl font-semibold text-gray-900 dark:text-white">Projects</h2>
 
 		<div class="mt-6 space-y-6">
-			<a href="https://www.verix.one" target="_blank" class="flex gap-4 group">
-				<img src="https://www.verix.one/logo-circular-transparent.png" alt="verix" class="w-12 h-12 bg-white rounded" />
-				<div>
-					<h3 class="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300">Verix</h3>
-					<p class="text-sm text-gray-600 dark:text-gray-400">Media company with AI-powered news analysis and civic engagement platform.</p>
-					<div class="flex flex-wrap gap-2 mt-2">
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">React Native</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Go</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">TypeScript</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">iOS</span>
+			{#each projects as project}
+				<button onclick={() => openProject(project)} class="flex gap-4 group w-full text-left cursor-pointer">
+					{#if project.image}
+						<img src={project.image} alt={project.name} class="w-12 h-12 min-w-12 rounded {project.imageClass}" style={project.imageStyle || ''} />
+					{:else}
+						<div class="w-12 h-12 min-w-12 bg-white rounded flex items-center justify-center">
+							<span class="text-2xl font-bold text-green-600">P</span>
+						</div>
+					{/if}
+					<div>
+						<h3 class="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300">{project.name}</h3>
+						<p class="text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
+						<div class="flex flex-wrap gap-2 mt-2">
+							{#each project.tech as t}
+								<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{t}</span>
+							{/each}
+						</div>
 					</div>
-				</div>
-			</a>
-
-			<a href="https://aquacode.xyz" target="_blank" class="flex gap-4 group">
-				<img src="/aquacode.png" alt="aquacode" class="w-12 h-12 bg-white rounded" />
-				<div>
-					<h3 class="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300">Aquacode</h3>
-					<p class="text-sm text-gray-600 dark:text-gray-400">Interactive coding app with AI assistant and quizzes.</p>
-					<div class="flex flex-wrap gap-2 mt-2">
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Svelte</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">SvelteKit</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">MongoDB</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Tailwind</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">ChatGPT API</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Vercel</span>
-					</div>
-				</div>
-			</a>
-
-			<div class="flex gap-4">
-				<img src="https://cdn.discordapp.com/avatars/1032836183065116722/b2628cef1a5640df7aac021d7e927b68.png?size=512" alt="bitt" class="w-12 h-12 rounded" style="background-color: rgb(88, 100, 242);" />
-				<div>
-					<h3 class="font-medium text-gray-900 dark:text-white">Bitt</h3>
-					<p class="text-sm text-gray-600 dark:text-gray-400">Multipurpose Discord bot for moderation and utilities.</p>
-					<div class="flex flex-wrap gap-2 mt-2">
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">JavaScript</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Discord.js</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Node.js</span>
-					</div>
-				</div>
-			</div>
-
-			<a href="https://blog.harshagrawal.dev" target="_blank" class="flex gap-4 group">
-				<img src="/bytecodey.png" alt="bytecodey" class="w-12 h-12 bg-gray-700 rounded p-1" />
-				<div>
-					<h3 class="font-medium text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300">Byte Codey Blog</h3>
-					<p class="text-sm text-gray-600 dark:text-gray-400">Tips and tutorials on Node.js, SvelteKit, and React.</p>
-					<div class="flex flex-wrap gap-2 mt-2">
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Svelte</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">SvelteKit</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Markdown</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Tailwind</span>
-						<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Vercel</span>
-					</div>
-				</div>
-			</a>
+				</button>
+			{/each}
 		</div>
 
 		<h2 class="mt-12 text-xl font-semibold text-gray-900 dark:text-white">Contact</h2>
@@ -144,3 +179,66 @@
 		</p>
 	</div>
 </div>
+
+{#if selectedProject}
+	<div
+		class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-2 sm:p-6"
+		onclick={handleBackdropClick}
+		role="dialog"
+		aria-modal="true"
+		transition:fade={{ duration: 200 }}
+	>
+		<div class="bg-white dark:bg-gray-900 w-full h-full overflow-y-auto rounded-xl shadow-2xl" transition:fly={{ y: 30, duration: 300 }}>
+			<div class="sticky top-0 bg-white dark:bg-gray-900 rounded-t-xl border-b border-gray-200 dark:border-gray-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+				<div class="flex items-center gap-3">
+					{#if selectedProject.image}
+						<img src={selectedProject.image} alt={selectedProject.name} class="w-10 h-10 rounded {selectedProject.imageClass}" style={selectedProject.imageStyle || ''} />
+					{:else}
+						<div class="w-10 h-10 bg-white rounded flex items-center justify-center border border-gray-200">
+							<span class="text-xl font-bold text-green-600">P</span>
+						</div>
+					{/if}
+					<h2 class="text-xl font-semibold text-gray-900 dark:text-white">{selectedProject.name}</h2>
+				</div>
+				<button onclick={closeProject} class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors cursor-pointer">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+
+			<div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-6">
+				<p class="text-gray-600 dark:text-gray-400 leading-relaxed">{selectedProject.fullDescription}</p>
+
+				<div>
+					<h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Tech Stack</h3>
+					<div class="flex flex-wrap gap-2">
+						{#each selectedProject.tech as t}
+							<span class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{t}</span>
+						{/each}
+					</div>
+				</div>
+
+				{#if selectedProject.screenshots.length > 0}
+					<div>
+						<h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Screenshots</h3>
+						<Carousel images={selectedProject.screenshots} mobile={selectedProject.mobile || false} />
+					</div>
+				{:else}
+					<div class="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-8 text-center">
+						<p class="text-sm text-gray-400 dark:text-gray-500">Screenshots coming soon</p>
+					</div>
+				{/if}
+
+				{#if selectedProject.link}
+					<a href={selectedProject.link} target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg text-sm font-medium hover:opacity-80 transition-opacity">
+						Visit Project
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+						</svg>
+					</a>
+				{/if}
+			</div>
+		</div>
+	</div>
+{/if}
